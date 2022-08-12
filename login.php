@@ -21,7 +21,7 @@
       </div>
     <header>
         <h1 id="title">Crocs</h1>
-        <p id="backHome"><b>Main page</b></p>
+        <p id="backHome"><b>Login page</b></p>
     </header>
     <footer>
         <p id="footer">© Smit Mehta & Iulia Danilov</p>
