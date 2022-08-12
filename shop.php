@@ -161,7 +161,7 @@ function test_input($data) {
           <a href="homePage.html">Home</a>
           <a class="active" href="shop.php">Shop</a>
           <a href="orders.php">Orders</a>
-          <a href="#about">About</a>
+          <a href="login.php">Login</a>
         </div>
       </div>
     <header>
