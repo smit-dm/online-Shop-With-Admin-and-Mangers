@@ -113,3 +113,6 @@ footer,#footer{
   background-color: #45a1ff;
   color: white;
 }
+#logout{
+  display: none;
+}

@@ -2,7 +2,7 @@
 
 session_start();
 
-include('includes/login_check.php');
+include_once('includes/login_check.php');
 
 ?>
 <!DOCTYPE html>

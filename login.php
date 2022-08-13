@@ -3,26 +3,29 @@
 session_start();
 include_once('includes/db_connection.php');
 
-  
+if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true){
+    header('Location: homePage.html');
+    return;
+}
+
 if(isset($_POST['submit'])){
     $username = $_POST['userId'];
     $password = $_POST['pass'];
   
-    $query = "SELECT * from `login` where `userId` = '$username' and `pass`='$password'";
+    $query = "SELECT * from userinfo where username = '".$username."' and pass = '".$password."'";
 
-  $result = $db->query($query);
-
-  $row = $result->fetch_assoc();
+  $result = mysqli_query($conn, $query);
   
-  if($row){
+  if(mysqli_num_rows($result)){
     $_SESSION['isLoggedIn'] = true;
     $_SESSION['user'] = $row;
     header('Location: homePage.html');
 
   }
+  else echo "i am sad";
 
-  
-} else echo "Wrong user/password!";
+}
+//  } else echo "Wrong user/password!";
 ?>
 <!DOCTYPE html>
 <html lang="en">

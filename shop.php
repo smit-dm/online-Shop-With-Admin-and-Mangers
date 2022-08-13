@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hstToShowBefore = 0.13 * $subtotalToShow;
     $hstToShowAfter = $subtotalToShow + $hstToShowBefore;
 
-    $sql = "INSERT INTO userinfo (username, pass) VALUES ('".$nameToShow."', '".$phoneToShow."')";
+    $sql = "INSERT INTO Orders (name, email, clogs, sandals, socks, phone, total) VALUES ('".$nameToShow."', '".$emailToShow."','".$clogsnumberToShow."','".$sandalsnumberToShow."','".$socksnumberToShow."','".$phoneToShow."','".$hstToShowAfter."' )";
     
 if (mysqli_query($conn, $sql)) {
 } else {
@@ -175,7 +175,8 @@ function test_input($data) {
           <a href="homePage.html">Home</a>
           <a class="active" href="shop.php">Shop</a>
           <a href="orders.php">Orders</a>
-          <a href="login.php">Login</a>
+          <a id="logout" href="logout.php">Logout</a>
+          <a id="login" href="login.php">Login</a>
         </div>
       </div>
     <header>
