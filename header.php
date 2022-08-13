@@ -4,4 +4,5 @@
         <a href="logout.php">Logout</a>
     <?php }else{?>
     <a href="login.php">Login</a>
-    <?php } ?>
+    <?php } ?> 
+<a href="admin.php">Admin</a>

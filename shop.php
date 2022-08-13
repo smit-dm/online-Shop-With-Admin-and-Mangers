@@ -30,16 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hstToShowBefore = 0.13 * $subtotalToShow;
     $hstToShowAfter = $subtotalToShow + $hstToShowBefore;
 
-    $sql = "INSERT INTO Orders (name, email, clogs, sandals, socks, phone, total) VALUES ('".$nameToShow."', '".$emailToShow."','".$clogsnumberToShow."','".$sandalsnumberToShow."','".$socksnumberToShow."','".$phoneToShow."','".$hstToShowAfter."' )";
-    
-if (mysqli_query($conn, $sql)) {
-} else {
-  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
-
-mysqli_close($conn);
+  if($clogsnumberToShow == 0 && $sandalsnumberToShow == 0 && $socksnumberToShow == 0) {
+    header('Location: shop.php');
        
-}
+    }  
+    else {$sql = "INSERT INTO Orders (name, email, clogs, sandals, socks, phone, total) VALUES ('".$nameToShow."', '".$emailToShow."','".$clogsnumberToShow."','".$sandalsnumberToShow."','".$socksnumberToShow."','".$phoneToShow."','".$hstToShowAfter."' )";
+    
+        if (mysqli_query($conn, $sql)) {
+        } else {
+         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);}
+    }
 
 
 function test_input($data) {
