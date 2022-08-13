@@ -1,3 +1,7 @@
+<?php
+include_once 'includes/db_connection.php';
+
+?>
 <?php 
 $clogs = $sandals = $socks = 0;
 $fnameErr = $femailErr = $fgenderErr =$fItemError=$fphoneErr=$fpostalErr=$faddress=$fcity=$fccn=$fexpMonth= "";
@@ -109,10 +113,10 @@ if(isset($_POST["submit"]))
             $fpassErr = "Passwords do not match";
         }
     }
-
-       
+    
     
 }
+
 
 // define variables and set to empty values
 $clogsnumberToShow = $hstToShowAfter =  $hstToShowBefore = $addressToShow = $sandalsnumberToShow = $socksnumberToShow = $nameToShow = $phoneToShow = $postcodeToShow = $cityToShow = $provinceToShow = $subtotalToShow = $emailToShow = "";
@@ -130,6 +134,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subtotalToShow = $clogsnumberToShow * 10 + $sandalsnumberToShow * 15 + $socksnumberToShow * 5;
     $hstToShowBefore = 0.13 * $subtotalToShow;
     $hstToShowAfter = $subtotalToShow + $hstToShowBefore;
+
+    $sql = "INSERT INTO userinfo (username, pass) VALUES ('".$nameToShow."', '".$phoneToShow."')";
+    
+if (mysqli_query($conn, $sql)) {
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+       
 }
 
 
