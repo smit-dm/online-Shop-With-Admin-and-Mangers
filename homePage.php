@@ -8,16 +8,15 @@
     <link rel="stylesheet" href="stylesheets/index.css">
 </head>
 <body>
-    <div class="header">
-        <a href="#default" id="logo" ><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg" alt="CompanyLogo" srcset=""></a>
-        <div class="header-right">
-          <a class="active" href="#home">Home</a>
-          <a href="shop.php">Shop</a>
-          <a href="orders.php">Orders</a>
-          <a id="logout" href="logout.php">Logout</a>
-          <a id="login" href="login.php">Login</a>
-        </div>
-      </div>
+<div class="header">
+<a href="#default" id="logo" ><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg" alt="CompanyLogo" ></a>
+<div class="header-right">
+    <a class="active" href="homePage.php">Home</a>
+    <a href="shop.php">Shop</a>
+    <a href="orders.php">Orders</a>
+<?php include_once("header.php") ?>
+</div>
+</div>
       <div class="content">
         <h1>Crocs</h1>
         <p id="backShop"><b>Buy NOW</b></p>

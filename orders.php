@@ -1,9 +1,11 @@
 <?php
 
 session_start();
-
 include_once('includes/login_check.php');
+include_once('includes/db_connection.php');
 
+$query = "SELECT * FROM `Orders`";
+$orders = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +20,14 @@ include_once('includes/login_check.php');
 
 <body>
 <div class="header">
-        <a href="#default" id="logo" ><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg" alt="CompanyLogo" ></a>
-        <div class="header-right">
-          <a href="homePage.html">Home</a>
-          <a href="shop.php">Shop</a>
-          <a class="active" href="orders.php">Orders</a>
-          <a href="login.php">Login</a>
-        </div>
-      </div>
+<a href="#default" id="logo" ><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg" alt="CompanyLogo" ></a>
+<div class="header-right">
+    <a href="homePage.php">Home</a>
+    <a href="shop.php">Shop</a>
+    <a class="active" href="orders.php">Orders</a>
+<?php include_once("header.php") ?>
+</div>
+</div>
     <header>
         <h1 id="title">Crocs</h1>
         <p id="backHome"><b>Main page</b></p>
@@ -40,12 +42,15 @@ include_once('includes/login_check.php');
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Crocs</td>
-          <td>luscious@lizards.com</td>
-          <td>$30</td>
+        <?php foreach ($orders as $order) { ?>
+          <tr>
+          <td><?= $order['name'] ?></td>
+          <td><?= $order['email'] ?></td>
+          <td><?= $order['clogs'] ?></td>
+          <td><?= $order['phone'] ?></td>
         </tr>
+       <?php } ?>
+        
       </tbody>
     </table>
     <footer>

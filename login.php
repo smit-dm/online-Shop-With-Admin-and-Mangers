@@ -39,16 +39,15 @@ if(isset($_POST['submit'])){
 </head>
 
 <body>
-    <div class="header">
-        <a href="#default" id="logo"><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg"
-                alt="CompanyLogo"></a>
-        <div class="header-right">
-            <a href="homePage.html">Home</a>
-            <a href="shop.php">Shop</a>
-            <a href="orders.php">Orders</a>
-            <a class="active" href="login.php">Login</a>
-        </div>
-    </div>
+<div class="header">
+<a href="#default" id="logo" ><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg" alt="CompanyLogo" ></a>
+<div class="header-right">
+    <a href="homePage.php">Home</a>
+    <a href="shop.php">Shop</a>
+    <a href="orders.php">Orders</a>
+<?php include_once("header.php") ?>
+</div>
+</div>
     <header>
         <h1 id="title">Crocs</h1>
         <p id="backHome"><b>Login page</b></p>
