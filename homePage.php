@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+include_once('includes/loginForHeader.php');
+include_once('includes/db_connection.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +18,7 @@
 <div class="header">
 <a href="#default" id="logo" ><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg" alt="CompanyLogo" ></a>
 <div class="header-right">
-    <a class="active" href="homePage.php">Home</a>
+    <a class="active"  href="homePage.php">Home</a>
     <a href="shop.php">Shop</a>
     <a href="orders.php">Orders</a>
 <?php include_once("header.php") ?>

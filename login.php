@@ -4,7 +4,7 @@ session_start();
 include_once('includes/db_connection.php');
 
 if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true){
-    header('Location: homePage.html');
+    header('Location: homePage.php');
     return;
 }
 
@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
   if(mysqli_num_rows($result)){
     $_SESSION['isLoggedIn'] = true;
     $_SESSION['user'] = $row;
-    header('Location: homePage.html');
+    header('Location: homePage.php');
 
   }
   else echo "i am sad";

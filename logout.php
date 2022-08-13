@@ -18,6 +18,8 @@ session_destroy();
     <div class="status">
         <?php 
             echo 'Successfully logged out!';
+            sleep(1);
+            header('Location: homePage.php');
         ?>
     </div>
   </main>

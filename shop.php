@@ -1,5 +1,8 @@
 <?php
-include_once 'includes/db_connection.php';
+
+session_start();
+include_once('includes/loginForHeader.php');
+include_once('includes/db_connection.php');
 
 ?>
 <?php 
@@ -8,114 +11,6 @@ $fnameErr = $femailErr = $fgenderErr =$fItemError=$fphoneErr=$fpostalErr=$faddre
 $fexpYear=$fpassErr="";
 
 
-if(isset($_POST["submit"]))
-{
-    if($_POST["clogs"] == "0" && $_POST["sandals"] == "0" && $_POST["socks"] == "0")
-    {
-        $fItemError = "Select at least 1 item";
-    }
-    if(empty($_POST["name"]))
-    {
-        $fnameErr = "Please enter name";
-    }
-    else
-    {
-        if(!preg_match("/^[a-zA-Z ]*$/" ,$_POST["name"]))
-        {
-            $fnameErr = "Only letters and numbers are allowed";
-        }
-    }
-    if(empty($_POST["email"]))
-    {
-        $femailErr = "Please enter email";
-    }
-    else
-    {
-        if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
-        {
-        $femailErr = "Enter valid email";
-        }
-    }
-    if(empty($_POST["phone"]))
-    {
-        $fphoneErr = "Please enter phone number";
-    }
-    else{
-        if(!is_numeric($_POST["phone"]))
-        {
-            $fphoneErr = "Please enter valid phone number";
-        }
-    }
-    if(empty($_POST["postal"]))
-    {
-        $fpostalErr = "Please enter postal number";
-    }
-    else
-    {
-        if(!preg_match("/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i" ,$_POST["postal"]))
-        {
-            $fpostalErr = "Invalid postcode";
-        }
-    }
-    if(empty($_POST["address"]))
-    {
-        $faddress = "Please enter address ";
-    }
-    if(empty($_POST["city"]))
-    {
-        $fcity = "Please enter city ";
-    }
-    if(empty($_POST["ccn"]))
-    {
-        $fccn = "Please enter credit card number";
-    }
-    else
-    {
-        if(!preg_match("/^[0-9][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9]$/i" ,$_POST["ccn"]))
-        {
-            $fccn = "Invalid credit card number";
-        }
-    }
-    if(empty($_POST["expMonth"]))
-    {
-        $fexpMonth = "Please enter expiry month";
-    }
-    else
-    {
-        if(!preg_match("/^[A-Z]{3}$/i" ,$_POST["expMonth"]))
-        {
-            $fexpMonth = "Invalid expiry month";
-        }
-    }
-    if(empty($_POST["expYear"]))
-    {
-        $fexpYear = "Please enter expiry year";
-    }
-    else
-    {
-        if(!preg_match("/^[0-9][0-9][0-9][0-9]$/i" ,$_POST["expYear"]))
-        {
-            $fexpYear = "Invalid expiry year";
-        }
-    }
-    if(empty($_POST["pass1"]))
-    {
-        $fpassErr = "Please create a password";
-    }
-    if(empty($_POST["pass2"]))
-    {
-        $fpassErr = "Please create a password";
-    }
-    else
-    {
-        if($_POST["pass1"] != $_POST["pass2"])
-        {
-            $fpassErr = "Passwords do not match";
-        }
-    }
-    
-    
-}
 
 
 // define variables and set to empty values
@@ -173,7 +68,7 @@ function test_input($data) {
 <a href="#default" id="logo" ><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg" alt="CompanyLogo" ></a>
 <div class="header-right">
     <a href="homePage.php">Home</a>
-    <a href="shop.php">Shop</a>
+    <a class="active"  href="shop.php">Shop</a>
     <a href="orders.php">Orders</a>
 <?php include_once("header.php") ?>
 </div>

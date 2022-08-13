@@ -35,11 +35,14 @@ $orders = mysqli_query($conn, $query);
 <table class="ordersTable">
       <thead>
         <tr>
-          <th>Order Number</th>
           <th>Name</th>
           <th>Email</th>
-          <th>Amount</th>
-        </tr>
+          <th>Clogs</th>
+          <th>Sandals</th>
+          <th>Socks</th>
+          <th>Phone Number</th>
+          <th>Order Amount</th>
+          </tr>
       </thead>
       <tbody>
         <?php foreach ($orders as $order) { ?>
@@ -47,7 +50,10 @@ $orders = mysqli_query($conn, $query);
           <td><?= $order['name'] ?></td>
           <td><?= $order['email'] ?></td>
           <td><?= $order['clogs'] ?></td>
+          <td><?= $order['sandals'] ?></td>
+          <td><?= $order['socks'] ?></td>
           <td><?= $order['phone'] ?></td>
+          <td><?= $order['total'] ?></td>
         </tr>
        <?php } ?>
         
