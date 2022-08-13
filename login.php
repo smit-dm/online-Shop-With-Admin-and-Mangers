@@ -1,3 +1,29 @@
+<?php
+
+session_start();
+include_once('includes/db_connection.php');
+
+  
+if(isset($_POST['submit'])){
+    $username = $_POST['userId'];
+    $password = $_POST['pass'];
+  
+    $query = "SELECT * from `login` where `userId` = '$username' and `pass`='$password'";
+
+  $result = $db->query($query);
+
+  $row = $result->fetch_assoc();
+  
+  if($row){
+    $_SESSION['isLoggedIn'] = true;
+    $_SESSION['user'] = $row;
+    header('Location: homePage.html');
+
+  }
+
+  
+} else echo "Wrong user/password!";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,21 +37,34 @@
 
 <body>
     <div class="header">
-        <a href="#default" id="logo" ><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg" alt="CompanyLogo" ></a>
+        <a href="#default" id="logo"><img class="logo" src="https://1000logos.net/wp-content/uploads/2018/11/Crocs.jpg"
+                alt="CompanyLogo"></a>
         <div class="header-right">
-          <a href="homePage.html">Home</a>
-          <a href="shop.php">Shop</a>
-          <a href="orders.php">Orders</a>
-          <a class="active" href="login.php">Login</a>
+            <a href="homePage.html">Home</a>
+            <a href="shop.php">Shop</a>
+            <a href="orders.php">Orders</a>
+            <a class="active" href="login.php">Login</a>
         </div>
-      </div>
+    </div>
     <header>
         <h1 id="title">Crocs</h1>
         <p id="backHome"><b>Login page</b></p>
     </header>
+    <form name="loginForm" method="Post">
+        <label>Username</label>
+        <input id="userId" type="text" name="userId"><br />
+
+        <label>Password</label>
+        <input id="pass" type="password" name="pass"><br />
+
+        <br/><br />
+        <input type="submit" value="Login" name="submit">
+        <p id="errors"></p>
+    </form>
     <footer>
         <p id="footer">© Smit Mehta & Iulia Danilov</p>
     </footer>
-        
+
 </body>
+
 </html>
